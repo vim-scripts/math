@@ -1,0 +1,27 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=2723
+
+This plugin has three parts, a keymap, a menu for inserting math symbols, and a few maps.  The characters produced are in utf-8.
+
+The Keymap:
+
+  :set kmp=math
+
+  Uses vim's keymap support to define key sequences which elicit Greek
+  upper case and lower case symbols, superscripts, subscripts, "vulgar"
+  fractions, arrows, grouping symbols, operators, relational symbols,
+  set symbols, and of course the ever popular miscellaneous.
+
+The Menu:
+  To enable the menu, use the mouse to select  [DrChip.MathKeys.Enable].
+  This menu operates in the insert/replace/ex mode; when in insert/replace/ex,
+  use the mouse to select a symbol from the various menus and it will be
+  inserted.
+
+The Maps:
+  While in visual block mode, and if :MathStart has been run:
+  _  will make various symbols into subscript symbols (numbers, vowels)
+  ^ will make various symbols into superscript symbols
+  & will transform symbols into related math symbols (- into a division line, roman alphabet into Greek, etc)
+
+(alpha/beta version available at http://mysite.verizon.net/astronaut/vim/index.html#MATH)
+

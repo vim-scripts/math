@@ -1,0 +1,246 @@
+*mathmenu.txt* DrChip's Math Keymap and Menu			Jul 28, 2009
+
+Author:  Charles E. Campbell, Jr.  <NdrOchip@ScampbellPfamily.AbizM>
+Copyright: (c) 2009 by Charles E. Campbell, Jr.			*mathmenu-copyright*
+	   NO WARRANTY, EXPRESS OR IMPLIED.  USE AT-YOUR-OWN-RISK.
+           The VIM LICENSE applies to keytab/math.vim,
+	   plugin/mathmenuPlugin.vim, autoload/mathmenu.vim, and
+	   doc/mathmenu.txt (see |copyright|) except use "mathmenu"
+	   instead of "Vim".
+
+==============================================================================
+1. Contents						*mathmenu* *mathmenu-contents*
+
+   1. Contents..........................................|mathmenu-contents|
+   2. Usage.............................................|mathmenu-usage|
+      The Menu..........................................|mathmenu-menu|
+        capitals........................................|mathmenu-capitals|
+        lowercase.......................................|mathmenu-lowercase|
+        superscripts....................................|mathmenu-superscripts|
+        subscripts......................................|mathmenu-subscripts|
+        fractions.......................................|mathmenu-fractions|
+        arrows..........................................|mathmenu-arrows|
+        grouping........................................|mathmenu-grouping|
+        misc............................................|mathmenu-misc|
+        operators.......................................|mathmenu-operators|
+        relationals.....................................|mathmenu-relationals|
+        sets............................................|mathmenu-sets|
+      The Keymap........................................|mathmenu-keymap|
+   3. History...........................................|mathmenu-history|
+
+==============================================================================
+2. Usage						*mathmenu-usage*
+
+The mathmenu and keymap are designed for utf-8 scriptencoding.  If the symbols
+herein don't appear correctly, perhaps your utf-8 
+
+THE MENU						*mathmenu-menu*
+
+With mathmenuPlugin.vim in your plugin directory, a minimalist menu appears
+under DrChip.MathKeys.Enable .  You may change the top-level menu label
+(ie. "DrChip"); see |mathmenu-g:DrChipTopLvlMenu|.
+
+Once enabled, there are eleven subcategories (and a Disable).  These
+subcategories are only active when vim is insert or replace modes.
+
+	    Capitals      Fractions  Operators                                                                     
+	    LowerCase     Arrows     Relationals                                                                   
+	    Superscripts  Grouping   Sets                                                                          
+	    Subscripts    Misc                                                                           
+
+Each category contains a number of symbols which you may select with the
+mouse.  See |mathmenu-keymap| to learn how to use the keymap shorthand.
+
+*mathmenu-capitals*
+	Name	Keymap	Character	Name	Keymap	Character
+	Alpha	GA	Α		Mu	GM	Μ
+	Beta	GB	Β		Nu	GN	Ν
+	Psi	GC	Ψ		Omikron	GO	Ο
+	Delta	GD	Δ		Pi	GP	Π
+	Epsilon	GE	Ε		Rho	GR	Ρ
+	Phi	GF	Φ		Sigma	GS	Σ
+	Gamma	GG	Γ		Tau	GT	Τ
+	Eta	GH	Η		Theta	GU	Θ
+	Iota	GI	Ι		Omega	GV	Ω
+	Xi	GJ	Ξ		Chi	GX	Χ
+	Kappa	GK	Κ		Upsilon	GY	Υ
+	Lambda	GL	Λ		Zeta	GZ	Ζ
+
+*mathmenu-lowercase*
+	Name	Keymap	Character	Name	Keymap	Character
+	alpha	a	α               nu	n	ν         
+	beta	b	β               xi	j	ξ         
+	gamma	g	γ               omicron	o	ο         
+	delta	d	δ               pi	p	π         
+	epsilon	e	ε               rho	r	ρ         
+	zeta	z	ζ               sigma	s	σ         
+	eta	h	η               tau	t	τ         
+	theta	u	θ               upsilon	y	υ         
+	iota	i	ι               phi	f	φ         
+	kappa	k	κ               chi	x	χ         
+	lambda	l	λ               psi	c	ψ         
+	mu	m	μ               omega	v	ω         
+	                          final-sigma	w	ς 
+
+*mathmenu-superscripts*
+	Keymap	Character	Keymap	Character
+	^0	⁰               ^7	⁷
+	^1	¹               ^8	⁸
+	^2	²               ^9	⁹
+	^3	³               ^+	⁺
+	^4	⁴               ^-	⁻
+	^5	⁵               ^(	⁽
+	^6	⁶               ^)	⁾
+
+*mathmenu-subscripts*
+	Keymap	Character	Keymap	Character
+	_0	₀               _7	₇
+	_1	₁               _8	₈
+	_2	₂               _9	₉
+	_3	₃               _+	₊
+	_4	₄               _-	₋
+	_5	₅               _(	₍
+	_6	₆               _)	₎
+	
+*mathmenu-fractions*
+	Keymap	Character	Keymap	Character
+	F12	½               F45	⅘ 
+	F13	⅓               F16	⅙ 
+	F23	⅔               F56	⅚ 
+	F14	¼               F18	⅛ 
+	F34	¾               F38	⅜ 
+	F15	⅕               F58	⅝ 
+	F25	⅖               F78	⅞ 
+	F35	⅗
+
+*mathmenu-arrows*
+	Keymap	Character	Keymap	Character
+	-<	⟵               IFF	⟺
+	->	⟶               |-<	⟻
+	<->	⟷               |->	⟼
+	=<	⟸               |=<	⟽
+	=>	⟹               |=>	⟾
+
+*mathmenu-grouping*
+	Keymap	Character	Keymap	Character
+	[[	⟦               U[	⎡
+	]]	⟧               M[	⎢
+	2[	⟦               B[	⎣
+	2]	⟧               U]	⎤
+	B<	〈              M]	⎥
+	B>	〉              B]	⎦
+	U(	⎛               U{	⎧
+	M(	⎜               M{	⎨
+	B(	⎝               B{	⎩
+	U)	⎞               U}	⎫
+	M)	⎟               M}	⎬
+	B)	⎠               B}	⎭
+
+*mathmenu-misc*
+	Keymap	Character	Keymap	Character
+	QED	∎               ...	⋱
+	INF	∞               LC	⌈
+	ANG	∡               RC	⌉
+	|...	⋮               LF	⌊
+	...	⋯               RF	⌋
+	/...	⋰               __	⎯
+	
+*mathmenu-operators*
+	Keymap	Character	Keymap	Character
+	O\.	⨀               So	∮
+	O+	⨁               SSo	∯
+	Ox	⨂               SSSo	∰
+	U\.	⨃               Scw	∲
+	U+	⨄               Sccw	∳
+	UN	∩               PD	∂
+	IN	∪               JN	⨝
+	CAP	(               TF	∴
+	CUP	(               BC	∵
+	SQCAP	⨅               PAR	∥
+	SQCUP	⨆               NPAR	∦
+	X	⨉               SUM	∑
+	MUL	×               PRD	∏
+	1S	∫               RING	∘
+	2S	∬               BU	∙
+	3S	∭               SQRT	√
+	4S	⨌               CUBR	∛
+	US	⌠               FORR	∜
+	MS	⎮               DEL	∆
+	BS	⌡               GRAD	∇
+	S-	⨍               NAB	∇
+	S=	⨎               DIAM	⋄
+	S/	⨏               L	ℒ
+
+*mathmenu-relationals*
+	Keymap	Character	Keymap	Character
+	<=	⩽               N~=	≄
+	>=	⩾               ~~	≈
+	<~	⪝               N~~	≉
+	>~	⪞               <>	≶
+	<<	⟪               ><	≷
+	>>	⟫               NE	≠
+	~	∼               ID	≡
+	N~	≁               NI	≢
+	R~	∽               +-	±
+	-~	≂               -+	∓
+	~-	≃               PERP	⊥
+	N~-	≄               PROP	∝
+	~=	≃
+	
+*mathmenu-sets*
+	Keymap	Character	Keymap	Character
+	SUB	⊂               NEX	∄
+	SUP	⊃               EMP	∅
+	NSUB	⊄               EL	∈
+	NSUP	⊅               NEL	∉
+	ESUB	⊆               C	ℂ
+	ESUP	⊇               H	ℍ
+	NESUB	⊈               N	ℕ
+	NESUP	⊉               R	ℝ
+	LAND	∧               Q	ℚ
+	LOR	∨               Z	ℤ
+	EX	∃               ALL	∀
+
+THE KEYMAP						*mathmenu-keymap*
+
+Each symbol is associated with a shorthand sequence of keys which comprise
+the math keymap.  You may use these sequences by >
+
+	:set kmp=math
+
+You may find the following two maps of use: >
+
+    imap <silent> <c-F6>	<c-o>:if &kmp == ""<bar>
+      \set kmp=math<bar>
+      \else<bar>
+      \set kmp=<bar>
+      \endif<bar>
+      \echo "kmp<".&kmp.">"<cr>
+    nmap <silent> <c-F6>	:if &kmp == ""<bar>
+      \set kmp=math<bar>
+      \else<bar>
+      \set kmp=<bar>
+      \endif<bar>
+      \echo "kmp<".&kmp.">"<cr>
+
+These set the ctrl-F6 key to toggle between the math keymap and no keymap;
+if you're accustomed to another keymap, just modify the maps above where
+they say "set kmp=<bar>" to "set kmp=YOUR-PREFERRED-KEYMAP".
+
+OPTIONS						*mathmenu-options*
+
+	*mathmenu-g:DrChipTopLvlMenu*
+
+	 The variable g:DrChipTopLvlMenu = "DrChip." by default.  You may
+	 change this variable in your .vimrc so that the menus reside under
+	 a different top-level name.
+
+
+==============================================================================
+3. History						*mathmenu-history*
+
+  1 : Jul 28, 2009 * initial release 
+
+==============================================================================
+Modelines:
+vim:tw=78:ts=8:ft=help:fdm=marker:fenc=utf-8:nomod:
