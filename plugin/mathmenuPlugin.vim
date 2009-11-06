@@ -1,7 +1,7 @@
 " mathmenuPlugin.vim
 "   Author: Charles E. Campbell, Jr.
-"   Date:   Jul 29, 2009
-"   Version: 1
+"   Date:   Nov 06, 2009
+"   Version: 2
 " GetLatestVimScripts: 2723 1 :AutoInstall: math.vim
 " ---------------------------------------------------------------------
 "  Load Once: {{{1
@@ -9,7 +9,7 @@ if &cp || exists("g:loaded_mathmenuPlugin")
  finish
 endif
 let s:keepcpo               = &cpo
-let g:loaded_mathmenuPlugin = "v1"
+let g:loaded_mathmenuPlugin = "v2"
 set cpo&vim
 
 " ---------------------------------------------------------------------

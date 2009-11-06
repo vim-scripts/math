@@ -1,4 +1,4 @@
-*mathmenu.txt* DrChip's Math Keymap and Menu			Jul 28, 2009
+*mathmenu.txt* DrChip's Math Keymap and Menu			Nov 06, 2009
 
 Author:  Charles E. Campbell, Jr.  <NdrOchip@ScampbellPfamily.AbizM>
 Copyright: (c) 2009 by Charles E. Campbell, Jr.			*mathmenu-copyright*
@@ -32,26 +32,32 @@ Copyright: (c) 2009 by Charles E. Campbell, Jr.			*mathmenu-copyright*
 2. Usage						*mathmenu-usage*
 
 The mathmenu and keymap are designed for utf-8 scriptencoding.  If the symbols
-herein don't appear correctly, perhaps your utf-8 
+herein don't appear correctly, and you're encoding is utf-8, then try other
+fonts.  I haven't found a good Windows font yet (ie. one that supports all the
+characters in the tables below) -- please let me know if you know of one.
+I'm using "Luxi Mono Bold" with Linux.  (set guifont=Luxi\ Mono\ Bold\ 10)
 
 THE MENU						*mathmenu-menu*
 
 With mathmenuPlugin.vim in your plugin directory, a minimalist menu appears
-under DrChip.MathKeys.Enable .  You may change the top-level menu label
-(ie. "DrChip"); see |mathmenu-g:DrChipTopLvlMenu|.
+as >
+	DrChip.MathKeys.Enable
+You may change the top-level menu label (ie. "DrChip");
+see |mathmenu-g:DrChipTopLvlMenu|.
 
 Once enabled, there are eleven subcategories (and a Disable).  These
-subcategories are only active when vim is insert or replace modes.
+subcategories are only active when vim is insert, replace, or
+ex- modes.
 
-	    Capitals      Fractions  Operators                                                                     
-	    LowerCase     Arrows     Relationals                                                                   
-	    Superscripts  Grouping   Sets                                                                          
-	    Subscripts    Misc                                                                           
+	    Capitals      Fractions  Operators
+	    LowerCase     Arrows     Relationals
+	    Superscripts  Grouping   Sets
+	    Subscripts    Misc
 
 Each category contains a number of symbols which you may select with the
 mouse.  See |mathmenu-keymap| to learn how to use the keymap shorthand.
 
-*mathmenu-capitals*
+GREEK CAPITALS 						*mathmenu-capitals*
 	Name	Keymap	Character	Name	Keymap	Character
 	Alpha	GA	Α		Mu	GM	Μ
 	Beta	GB	Β		Nu	GN	Ν
@@ -66,145 +72,188 @@ mouse.  See |mathmenu-keymap| to learn how to use the keymap shorthand.
 	Kappa	GK	Κ		Upsilon	GY	Υ
 	Lambda	GL	Λ		Zeta	GZ	Ζ
 
-*mathmenu-lowercase*
+GREEK LOWER CASE					*mathmenu-lowercase*
 	Name	Keymap	Character	Name	Keymap	Character
-	alpha	a	α               nu	n	ν         
-	beta	b	β               xi	j	ξ         
-	gamma	g	γ               omicron	o	ο         
-	delta	d	δ               pi	p	π         
-	epsilon	e	ε               rho	r	ρ         
-	zeta	z	ζ               sigma	s	σ         
-	eta	h	η               tau	t	τ         
-	theta	u	θ               upsilon	y	υ         
-	iota	i	ι               phi	f	φ         
-	kappa	k	κ               chi	x	χ         
-	lambda	l	λ               psi	c	ψ         
-	mu	m	μ               omega	v	ω         
-	                          final-sigma	w	ς 
+	alpha	a	α              	xi	j	ξ
+	beta	b	β              	omicron	o	ο
+	gamma	g	γ              	pi	p	π
+	delta	d	δ              	varpi	vp	ϖ
+	epsilon	e	ϵ              	rho	r	ρ
+     varepsilon	ve	ε              	varrho	vr	ϱ
+	zeta	z	ζ              	sigma	s	σ
+	eta	h	η            varsigma	vs	ς
+	theta	u	θ              	tau	t	τ
+     vartheta	vu	ϑ              	upsilon	y	υ
+	iota	i	ι              	phi	f	φ
+	kappa	k	κ              	varphi	vf	ϕ
+	lambda	l	λ              	chi	x	χ
+	mu	m	μ              	psi	c	ψ
+	nu	n	ν              	omega	w	ω
 
-*mathmenu-superscripts*
+SUPERSCRIPTS					*mathmenu-superscripts*
 	Keymap	Character	Keymap	Character
-	^0	⁰               ^7	⁷
-	^1	¹               ^8	⁸
-	^2	²               ^9	⁹
-	^3	³               ^+	⁺
-	^4	⁴               ^-	⁻
-	^5	⁵               ^(	⁽
-	^6	⁶               ^)	⁾
+	^0	⁰		^d	ᵈ
+	^1	¹		^e	ᵉ
+	^2	²		^f	ᶠ
+	^3	³		^g	ᵍ
+	^4	⁴		^h	ʰ
+	^5	⁵		^i	ⁱ
+	^6	⁶		^j	ʲ
+	^7	⁷		^k	ᵏ
+	^8	⁸		^l	ˡ
+	^9	⁹		^m	ᵐ
+	^+	⁺		^n	ⁿ
+	^-	⁻		^o	ᵒ
+	^<	˂		^p	ᵖ
+	^>	˃		^r	ʳ
+	^/	ˊ		^s	ˢ
+	^^	˄		^t	ᵗ
+	^(	⁽		^u	ᵘ
+	^)	⁾		^v	ᵛ
+	^,	ʾ		^x	ˣ
+	^a	ᵃ		^w	ʷ
+	^b	ᵇ		^y	ʸ
+	^c	ᶜ		^z	ᶻ
 
-*mathmenu-subscripts*
+SUBSCRIPTS					*mathmenu-subscripts*
 	Keymap	Character	Keymap	Character
-	_0	₀               _7	₇
-	_1	₁               _8	₈
-	_2	₂               _9	₉
-	_3	₃               _+	₊
-	_4	₄               _-	₋
-	_5	₅               _(	₍
-	_6	₆               _)	₎
-	
-*mathmenu-fractions*
+	_0	₀        	_(	₍
+	_1	₁        	_)	₎
+	_2	₂        	_^	‸
+	_3	₃        	_a	ₐ
+	_4	₄        	_e	ₑ
+	_5	₅        	_i	ᵢ
+	_6	₆        	_o	ₒ
+	_7	₇        	_r	ᵣ
+	_8	₈        	_u	ᵤ
+	_9	₉        	_v	ᵥ
+	_+	₊        	_x	ₓ
+	_-	₋
+
+FRACTIONS					*mathmenu-fractions*
 	Keymap	Character	Keymap	Character
-	F12	½               F45	⅘ 
-	F13	⅓               F16	⅙ 
-	F23	⅔               F56	⅚ 
-	F14	¼               F18	⅛ 
-	F34	¾               F38	⅜ 
-	F15	⅕               F58	⅝ 
-	F25	⅖               F78	⅞ 
+	F12	½               F45	⅘
+	F13	⅓               F16	⅙
+	F23	⅔               F56	⅚
+	F14	¼               F18	⅛
+	F34	¾               F38	⅜
+	F15	⅕               F58	⅝
+	F25	⅖               F78	⅞
 	F35	⅗
 
-*mathmenu-arrows*
+ARROWS							*mathmenu-arrows*
 	Keymap	Character	Keymap	Character
-	-<	⟵               IFF	⟺
-	->	⟶               |-<	⟻
-	<->	⟷               |->	⟼
-	=<	⟸               |=<	⟽
-	=>	⟹               |=>	⟾
+	-<	⟵		IFF	⟺
+	->	⟶		\|-<	↤
+	<->	↔		\|->	↦
+	=<	⟸		\|=<	⟽
+	=>	⟹		\|=>	⟾
 
-*mathmenu-grouping*
+GROUPING SYMBOLS					*mathmenu-grouping*
 	Keymap	Character	Keymap	Character
-	[[	⟦               U[	⎡
-	]]	⟧               M[	⎢
-	2[	⟦               B[	⎣
-	2]	⟧               U]	⎤
-	B<	〈              M]	⎥
-	B>	〉              B]	⎦
-	U(	⎛               U{	⎧
-	M(	⎜               M{	⎨
-	B(	⎝               B{	⎩
-	U)	⎞               U}	⎫
-	M)	⎟               M}	⎬
-	B)	⎠               B}	⎭
+	[[	⟦		M]	⎥
+	]]	⟧		B]	⎦
+	2[	⟦		U{	⎧
+	2]	⟧		M{	⎨
+	B<	〈		B{	⎩
+	B>	〉		U}	⎫
+	U(	⎛		M}	⎬
+	M(	⎜		B}	⎭
+	B(	⎝		V(	︵
+	U)	⎞		V)	︶
+	M)	⎟		V[	︹
+	B)	⎠		V]	︺
+	U[	⎡		V{	︷
+	M[	⎢		V}	︸
+	B[	⎣		V<	︿
+	U]	⎤		V>	﹀
 
-*mathmenu-misc*
+MISCELLANEOUS						*mathmenu-misc*
 	Keymap	Character	Keymap	Character
-	QED	∎               ...	⋱
-	INF	∞               LC	⌈
-	ANG	∡               RC	⌉
-	|...	⋮               LF	⌊
-	...	⋯               RF	⌋
-	/...	⋰               __	⎯
-	
-*mathmenu-operators*
-	Keymap	Character	Keymap	Character
-	O\.	⨀               So	∮
-	O+	⨁               SSo	∯
-	Ox	⨂               SSSo	∰
-	U\.	⨃               Scw	∲
-	U+	⨄               Sccw	∳
-	UN	∩               PD	∂
-	IN	∪               JN	⨝
-	CAP	(               TF	∴
-	CUP	(               BC	∵
-	SQCAP	⨅               PAR	∥
-	SQCUP	⨆               NPAR	∦
-	X	⨉               SUM	∑
-	MUL	×               PRD	∏
-	1S	∫               RING	∘
-	2S	∬               BU	∙
-	3S	∭               SQRT	√
-	4S	⨌               CUBR	∛
-	US	⌠               FORR	∜
-	MS	⎮               DEL	∆
-	BS	⌡               GRAD	∇
-	S-	⨍               NAB	∇
-	S=	⨎               DIAM	⋄
-	S/	⨏               L	ℒ
+	ARC	⌒		RC	⌉
+	QED	∎		LF	⌊
+	QED	‣		RF	⌋
+	INF	∞		__	⎯
+	ANG	∡		--	─
+	|...	⋮		==	═
+	...	⋯		HB	―
+	/...	⋰		VB	┃
+	\...	⋱		BB	‖
+	DU	⠁		SH	ℋ
+	DM	⠂		SI	ℑ
+	DD	⡀		SL	ℒ
+	LC	⌈		SR	ℜ
 
-*mathmenu-relationals*
+OPERATORS					*mathmenu-operators*
 	Keymap	Character	Keymap	Character
-	<=	⩽               N~=	≄
-	>=	⩾               ~~	≈
-	<~	⪝               N~~	≉
-	>~	⪞               <>	≶
-	<<	⟪               ><	≷
-	>>	⟫               NE	≠
-	~	∼               ID	≡
-	N~	≁               NI	≢
-	R~	∽               +-	±
-	-~	≂               -+	∓
-	~-	≃               PERP	⊥
-	N~-	≄               PROP	∝
-	~=	≃
-	
-*mathmenu-sets*
+	O\.	⨀ 		Scw	∲
+	O+	⨁ 		Sccw	∳
+	Ox	⨂ 		PD	∂
+	U\.	⨃ 		JN	⨝
+	U+	⨄ 		TF	∴
+	IN	∩ 		BC	∵
+	UN	∪ 		PAR	∥
+	CAP	∩ 		NPAR	∦
+	CUP	∪ 		SUM	∑
+	SQCAP	⨅ 		USUM	⎲
+	SQCUP	⨆ 		BSUM	⎳
+	X	⨉ 		PRD	∏
+	MUL	× 		RING	∘
+	1S	∫ 		BU	∙
+	2S	∬ 		AST	∗
+	3S	∭ 		LA	⁎
+	4S	⨌ 		SQRT	√
+	US	⌠ 		CUBR	∛
+	MS	⎮ 		FORR	∜
+	BS	⌡ 		DEL	∆
+	S-	⨍ 		GRAD	∇
+	S=	⨎ 		NAB	∇
+	S/	⨏ 		DIAM	⋄
+	So	∮ 		R/	∕
+	SSo	∯ 		L/	∖
+	SSSo	∰
+
+RELATIONAL SYMBOLS					*mathmenu-relationals*
 	Keymap	Character	Keymap	Character
-	SUB	⊂               NEX	∄
-	SUP	⊃               EMP	∅
-	NSUB	⊄               EL	∈
-	NSUP	⊅               NEL	∉
-	ESUB	⊆               C	ℂ
-	ESUP	⊇               H	ℍ
-	NESUB	⊈               N	ℕ
-	NESUP	⊉               R	ℝ
-	LAND	∧               Q	ℚ
-	LOR	∨               Z	ℤ
-	EX	∃               ALL	∀
+	<=	≤		><	≷
+	\>=	≥		!=	≠
+	<~	⪝		ID	≡
+	>~	⪞		EQV	≍
+	<<	⟪		JOIN	⋈
+	>>	⟫		NID	≢
+	~	∼		O+	⊕
+	N~	≁		O-	⊖
+	R~	∽		Ox	⊗
+	-~	≂		O/	⊘
+	~-	≃		O\.	⊙
+	=~	≅		Oo	⊚
+	!~-	≄		+-	±
+	~~	≈		-+	∓
+	=\.	≐		PERP	⊥
+	EST	≙		PROP	∝
+	!~~	≉		PREC	≺
+	<>	≶		SUCC	≻
+
+SETS						*mathmenu-sets*
+	Keymap	Character	Keymap	Character
+	SUB	⊂		EMP	∅
+	NSUB	⊄		EL	∈
+	ESUB	⊆		NEL	∉
+	NESUB	⊈		C	ℂ
+	SUP	⊃		H	ℍ
+	NSUP	⊅		N	ℕ
+	ESUP	⊇		R	ℝ
+	NESUP	⊉		Q	ℚ
+	LAND	∧		Z	ℤ
+	LOR	∨		ALL	∀
+	EX	∃		*	∗
+	NEX	∄
 
 THE KEYMAP						*mathmenu-keymap*
 
-Each symbol is associated with a shorthand sequence of keys which comprise
-the math keymap.  You may use these sequences by >
+Each symbol is associated with a shorthand sequence of keys which are
+supported by the math keymap.  You may use these sequences after
+enabling them with: >
 
 	:set kmp=math
 
@@ -239,7 +288,8 @@ OPTIONS						*mathmenu-options*
 ==============================================================================
 3. History						*mathmenu-history*
 
-  1 : Jul 28, 2009 * initial release 
+  2 : Nov 06, 2009 * more symbols and ex-mode support
+  1 : Jul 28, 2009 * initial release
 
 ==============================================================================
 Modelines:
