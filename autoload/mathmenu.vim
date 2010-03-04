@@ -1,6 +1,6 @@
 " mathmenu.vim
 "   Author: Charles E. Campbell, Jr.
-"   Date:   Nov 06, 2009
+"   Date:   Jan 07, 2010
 " ---------------------------------------------------------------------
 "  Load Once: {{{1
 if &cp
@@ -13,6 +13,28 @@ set cpo&vim
 " mathmenu#StartMathKeytab: {{{1
 fun! mathmenu#StartMathKeytab()
 "  call Dfunc("mathmenu#StartMathKeytab()")
+
+  if !exists("b:startmathmaps")
+   let b:startmathmaps= 1
+
+   call SaveUserMaps("bv","","_^","MathMenu".bufnr("%"))
+   if !hasmapto('<Plug>MathMenuSubscript')
+    vmap <buffer> <unique> _	<Plug>MathMenuSubscript
+   endif
+   vno <buffer> <silent> <Plug>MathMenuSubscript	<esc>gv:B call mathmenu#Subscript()<cr>
+
+   if !hasmapto('<Plug>MathMenuSuperscript')
+    vmap <buffer> <unique> ^	<Plug>MathMenuSuperscript
+   endif
+   vno <buffer> <silent> <Plug>MathMenuSuperscript	<esc>gv:B call mathmenu#Superscript()<cr>
+
+   if !hasmapto('<Plug>MathMenuGreekify')
+    vmap <buffer> <unique> &	<Plug>MathMenuGreekify
+   endif
+   vno <buffer> <silent> <Plug>MathMenuGreekify	<esc>gv:B call mathmenu#Greekify()<cr>
+
+"   call Decho("saving user vmaps for _ and ^, if any")
+  endif
 
   exe 'silent! nunmenu '.g:DrChipTopLvlMenu.'MathKeys'
   exe 'silent! iunmenu '.g:DrChipTopLvlMenu.'MathKeys'
@@ -155,6 +177,8 @@ fun! mathmenu#StartMathKeytab()
   exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^(<tab>⁽	⁽'
   exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^)<tab>⁾	⁾'
   exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^,<tab>ʾ	ʾ'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^\.<tab>˙	˙'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^=<tab>˭	˭'
   exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^a<tab>ᵃ	ᵃ'
   exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^b<tab>ᵇ	ᵇ'
   exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^c<tab>ᶜ	ᶜ'
@@ -180,6 +204,24 @@ fun! mathmenu#StartMathKeytab()
   exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^w<tab>ʷ	ʷ'
   exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^y<tab>ʸ	ʸ'
   exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^z<tab>ᶻ	ᶻ'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^A<tab>ᴬ	ᴬ'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^B<tab>ᴮ	ᴮ'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^D<tab>ᴰ	ᴰ'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^E<tab>ᴱ	ᴱ'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^G<tab>ᴳ	ᴳ'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^H<tab>ᴴ	ᴴ'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^I<tab>ᴵ	ᴵ'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^J<tab>ᴶ	ᴶ'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^K<tab>ᴷ	ᴷ'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^L<tab>ᴸ	ᴸ'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^M<tab>ᴹ	ᴹ'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^N<tab>ᴺ	ᴺ'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^O<tab>ᴼ	ᴼ'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^P<tab>ᴾ	ᴾ'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^R<tab>ᴿ	ᴿ'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^T<tab>ᵀ	ᵀ'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^U<tab>ᵁ	ᵁ'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^W<tab>ᵂ	ᵂ'
 
   exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^0<tab>⁰	⁰'
   exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^1<tab>¹	¹'
@@ -200,6 +242,8 @@ fun! mathmenu#StartMathKeytab()
   exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^(<tab>⁽	⁽'
   exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^)<tab>⁾	⁾'
   exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^,<tab>ʾ	ʾ'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^\.<tab>˙	˙'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^=<tab>˭	˭'
   exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^a<tab>ᵃ	ᵃ'
   exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^b<tab>ᵇ	ᵇ'
   exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^c<tab>ᶜ	ᶜ'
@@ -225,6 +269,24 @@ fun! mathmenu#StartMathKeytab()
   exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^w<tab>ʷ	ʷ'
   exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^y<tab>ʸ	ʸ'
   exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^z<tab>ᶻ	ᶻ'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^A<tab>ᴬ	ᴬ'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^B<tab>ᴮ	ᴮ'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^D<tab>ᴰ	ᴰ'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^E<tab>ᴱ	ᴱ'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^G<tab>ᴳ	ᴳ'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^H<tab>ᴴ	ᴴ'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^I<tab>ᴵ	ᴵ'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^J<tab>ᴶ	ᴶ'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^K<tab>ᴷ	ᴷ'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^L<tab>ᴸ	ᴸ'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^M<tab>ᴹ	ᴹ'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^N<tab>ᴺ	ᴺ'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^O<tab>ᴼ	ᴼ'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^P<tab>ᴾ	ᴾ'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^R<tab>ᴿ	ᴿ'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^T<tab>ᵀ	ᵀ'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^U<tab>ᵁ	ᵁ'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Superscripts.^W<tab>ᵂ	ᵂ'
 
   " subscripts {{{2
   exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Subscripts._0<tab>₀	₀'
@@ -239,6 +301,7 @@ fun! mathmenu#StartMathKeytab()
   exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Subscripts._9<tab>₉	₉'
   exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Subscripts._+<tab>₊	₊'
   exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Subscripts._-<tab>₋	₋'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Subscripts._/<tab>ˏ	ˏ'
   exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Subscripts._(<tab>₍	₍'
   exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Subscripts._)<tab>₎	₎'
   exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Subscripts._^<tab>‸	‸'
@@ -263,6 +326,7 @@ fun! mathmenu#StartMathKeytab()
   exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Subscripts._9<tab>₉	₉'
   exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Subscripts._+<tab>₊	₊'
   exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Subscripts._-<tab>₋	₋'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Subscripts._/<tab>ˏ	ˏ'
   exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Subscripts._(<tab>₍	₍'
   exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Subscripts._)<tab>₎	₎'
   exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Subscripts._^<tab>‸	‸'
@@ -505,6 +569,9 @@ fun! mathmenu#StartMathKeytab()
   exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Operators.DIAM<tab>⋄	⋄'
   exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Operators.R/<tab>∕	∕'
   exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Operators.L/<tab>∖	∖'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Operators.P1<tab>′	′'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Operators.P2<tab>″	″'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Operators.P3<tab>‴	‴'
 
   exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Operators.O\.<tab>⨀	⨀'
   exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Operators.O+<tab>⨁	⨁'
@@ -557,6 +624,9 @@ fun! mathmenu#StartMathKeytab()
   exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Operators.DIAM<tab>⋄	⋄'
   exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Operators.R/<tab>∕	∕'
   exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Operators.L/<tab>∖	∖'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Operators.P1<tab>′	′'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Operators.P2<tab>″	″'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Operators.P3<tab>‴	‴'
 
   " Relationals {{{2
   exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Relationals.<=<tab>≤	≤'
@@ -579,10 +649,14 @@ fun! mathmenu#StartMathKeytab()
   exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Relationals.<><tab>≶	≶'
   exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Relationals.><<tab>≷	≷'
   exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Relationals.!=<tab>≠	≠'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Relationals.!<<tab>≮	≮'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Relationals.!><tab>≯	≯'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Relationals.!<=<tab>≰	≰'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Relationals.!>=<tab>≱	≱'
   exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Relationals.ID<tab>≡	≡'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Relationals.NID<tab>≢	≢'
   exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Relationals.EQV<tab>≍	≍'
   exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Relationals.JOIN<tab>⋈	⋈'
-  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Relationals.NID<tab>≢	≢'
   exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Relationals.O+<tab>⊕	⊕'
   exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Relationals.O-<tab>⊖	⊖'
   exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Relationals.Ox<tab>⊗	⊗'
@@ -616,10 +690,14 @@ fun! mathmenu#StartMathKeytab()
   exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Relationals.<><tab>≶	≶'
   exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Relationals.><<tab>≷	≷'
   exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Relationals.!=<tab>≠	≠'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Relationals.!<<tab>≮	≮'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Relationals.!><tab>≯	≯'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Relationals.!<=<tab>≰	≰'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Relationals.!>=<tab>≱	≱'
   exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Relationals.ID<tab>≡	≡'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Relationals.NID<tab>≢	≢'
   exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Relationals.EQV<tab>≍	≍'
   exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Relationals.JOIN<tab>⋈	⋈'
-  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Relationals.NID<tab>≢	≢'
   exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Relationals.O+<tab>⊕	⊕'
   exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Relationals.O-<tab>⊕	⊖'
   exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Relationals.Ox<tab>⊕	⊗'
@@ -649,12 +727,13 @@ fun! mathmenu#StartMathKeytab()
   exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Sets.EMP<tab>∅	∅'
   exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Sets.EL<tab>∈	∈'
   exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Sets.NEL<tab>∉	∉'
-  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Sets.C<tab>ℂ	ℂ'
-  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Sets.H<tab>ℍ	ℍ'
-  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Sets.N<tab>ℕ	ℕ'
-  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Sets.R<tab>ℝ	ℝ'
-  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Sets.Q<tab>ℚ	ℚ'
-  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Sets.Z<tab>ℤ	ℤ'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Sets.CC<tab>ℂ	ℂ'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Sets.HH<tab>ℍ	ℍ'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Sets.LL<tab>ℒ	ℒ'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Sets.NN<tab>ℕ	ℕ'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Sets.RR<tab>ℝ	ℝ'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Sets.QQ<tab>ℚ	ℚ'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Sets.ZZ<tab>ℤ	ℤ'
   exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Sets.ALL<tab>∀	∀'
   exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Sets.*<tab>∗	∗'
 
@@ -673,14 +752,82 @@ fun! mathmenu#StartMathKeytab()
   exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Sets.EMP<tab>∅	∅'
   exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Sets.EL<tab>∈	∈'
   exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Sets.NEL<tab>∉	∉'
-  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Sets.C<tab>ℂ	ℂ'
-  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Sets.H<tab>ℍ	ℍ'
-  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Sets.N<tab>ℕ	ℕ'
-  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Sets.R<tab>ℝ	ℝ'
-  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Sets.Q<tab>ℚ	ℚ'
-  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Sets.Z<tab>ℤ	ℤ'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Sets.CC<tab>ℂ	ℂ'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Sets.HH<tab>ℍ	ℍ'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Sets.LL<tab>ℒ	ℒ'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Sets.NN<tab>ℕ	ℕ'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Sets.RR<tab>ℝ	ℝ'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Sets.QQ<tab>ℚ	ℚ'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Sets.ZZ<tab>ℤ	ℤ'
   exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Sets.ALL<tab>∀	∀'
   exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Sets.*<tab>∗	∗'
+
+  " Box Characters {{{2
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Box.B-<tab>─	─'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Box.B\|<tab>│	│'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Box.DSH-<tab>┄	┄'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Box.DSH\|<tab>┆	┆'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Box.BUL<tab>┌	┌'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Box.BDL<tab>└	└'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Box.BUR<tab>┐	┐'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Box.BDR<tab>┘	┘'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Box.C+<tab>┼	┼'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Box.Cl<tab>┤	┤'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Box.Cr<tab>├	├'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Box.Cd<tab>┬	┬'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Box.Cu<tab>┴	┴'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Box.HB-<tab>━	━'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Box.HB\|<tab>┃	┃'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Box.HD-<tab>┅	┅'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Box.HD\|<tab>┇	┇'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Box.HBUL<tab>┏	┏'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Box.HBDL<tab>┗	┗'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Box.HBUR<tab>┓	┓'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Box.HBDR<tab>┛	┛'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Box.HC+<tab>╋	╋'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Box.HCl<tab>┫	┫'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Box.HCr<tab>┣	┣'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Box.HCd<tab>┳	┳'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Box.HCu<tab>┻	┻'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Box.D-<tab>═	═'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Box.D\|<tab>║	║'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Box.DUL<tab>╔	╔'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Box.DDL<tab>╚	╚'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Box.DUR<tab>╗	╗'
+  exe 'imenu '.g:DrChipTopLvlMenu.'MathKeys.Box.DDR<tab>╝	╝'
+
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Box.B_<tab>─	─'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Box.B\|<tab>│	│'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Box.DSH_<tab>┄	┄'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Box.DSH\|<tab>┆	┆'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Box.BUL<tab>┌	┌'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Box.BDL<tab>└	└'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Box.BUR<tab>┐	┐'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Box.BDR<tab>┘	┘'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Box.C+<tab>┼	┼'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Box.Cl<tab>┤	┤'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Box.Cr<tab>├	├'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Box.Cd<tab>┬	┬'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Box.Cu<tab>┴	┴'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Box.HB-<tab>━	━'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Box.HB\|<tab>┃	┃'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Box.HD-<tab>┅	┅'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Box.HD\|<tab>┇	┇'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Box.HBUL<tab>┏	┏'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Box.HBDL<tab>┗	┗'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Box.HBUR<tab>┓	┓'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Box.HBDR<tab>┛	┛'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Box.HC+<tab>╋	╋'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Box.HCl<tab>┫	┫'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Box.HCr<tab>┣	┣'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Box.HCd<tab>┳	┳'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Box.HCu<tab>┻	┻'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Box.D-<tab>═	═'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Box.D\|<tab>║	║'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Box.DUL<tab>╔	╔'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Box.DDL<tab>╚	╚'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Box.DUR<tab>╗	╗'
+  exe 'cmenu '.g:DrChipTopLvlMenu.'MathKeys.Box.DDR<tab>╝	╝'
 
 "  call Dret("mathmenu#StartMathKeytab")
 endfun
@@ -689,13 +836,195 @@ endfun
 " mathmenu#StopMathKeytab: {{{1
 fun! mathmenu#StopMathKeytab()
 "  call Dfunc("mathmenu#StopMathKeytab()")
+  if exists("b:startmathmaps")
+   unlet b:startmathmaps
+"   call Decho("restoring user vmaps for _ and ^, if any")
+   vunmap <buffer> _
+   vunmap <buffer> ^
+   call RestoreUserMaps("MathMenu".bufnr("%"))
+  endif
   exe 'silent! nunmenu '.g:DrChipTopLvlMenu.'MathKeys'
   exe 'silent! iunmenu '.g:DrChipTopLvlMenu.'MathKeys'
   exe 'silent! vunmenu '.g:DrChipTopLvlMenu.'MathKeys'
   exe 'nmenu '.g:DrChipTopLvlMenu."MathKeys.Enable	:call mathmenu#StartMathKeytab()\<cr>"
   exe 'imenu '.g:DrChipTopLvlMenu."MathKeys.Enable	\<c-o>:call mathmenu#StartMathKeytab()\<cr>"
   exe 'vmenu '.g:DrChipTopLvlMenu."MathKeys.Enable	:<c-u>call mathmenu#StartMathKeytab()\<cr>gv"
+  exe 'cmenu '.g:DrChipTopLvlMenu."MathKeys.Enable	:<c-u>call mathmenu#StartMathKeytab()\<cr>"
 "  call Dret("mathmenu#StopMathKeytab")
+endfun
+
+" ---------------------------------------------------------------------
+" mathmenu#Subscript: converts a visual-mode selected character to a subscripted equivalent (if any) {{{1
+fun! mathmenu#Subscript()
+"  call Dfunc("mathmenu#Subscript()")
+
+   s/[0⁰]/₀/ge
+   s/[1¹]/₁/ge
+   s/[2²]/₂/ge
+   s/[3³]/₃/ge
+   s/[4⁴]/₄/ge
+   s/[5⁵]/₅/ge
+   s/[6⁶]/₆/ge
+   s/[7⁷]/₇/ge
+   s/[8⁸]/₈/ge
+   s/[9⁹]/₉/ge
+   s/[/ˊ]/ˏ/ge
+   s/[+⁺]/₊/ge
+   s/[-⁻]/₋/ge
+   s/[(⁽]/₍/ge
+   s/[)⁾]/₎/ge
+   s/[.˙]/‸/ge
+   s/[aᵃ]/ₐ/ge
+   s/[eᵉ]/ₑ/ge
+   s/[iⁱ]/ᵢ/ge
+   s/[oᵒ]/ₒ/ge
+   s/[rʳ]/ᵣ/ge
+   s/[uᵘ]/ᵤ/ge
+   s/[vᵛ]/ᵥ/ge
+   s/[xˣ]/ₓ/ge
+
+"  call Dret("mathmenu#Subscript")
+endfun
+
+" ---------------------------------------------------------------------
+" mathmenu#Superscript: {{{1
+fun! mathmenu#Superscript()
+"  call Dfunc("mathmenu#Superscript()")
+
+  s/[0₀]/⁰/ge
+  s/[1₁]/¹/ge
+  s/[2₂]/²/ge
+  s/[3₃]/³/ge
+  s/[4₄]/⁴/ge
+  s/[5₅]/⁵/ge
+  s/[6₆]/⁶/ge
+  s/[7₇]/⁷/ge
+  s/[8₈]/⁸/ge
+  s/[9₉]/⁹/ge
+  s/[+₊]/⁺/ge
+  s/[-₋]/⁻/ge
+  s/</˂/ge
+  s/>/˃/ge
+  s@/@ˊ@ge
+  s/\^/˄/ge
+  s/[(₍]/⁽/ge
+  s/[)₎]/⁾/ge
+  s/,/ʾ/ge
+  s/\./˙/ge
+  s/=/˭/ge
+  s/[aₐ]/ᵃ/ge
+  s/b/ᵇ/ge
+  s/c/ᶜ/ge
+  s/d/ᵈ/ge
+  s/[eₑ]/ᵉ/ge
+  s/f/ᶠ/ge
+  s/g/ᵍ/ge
+  s/h/ʰ/ge
+  s/[iᵢ]/ⁱ/ge
+  s/j/ʲ/ge
+  s/k/ᵏ/ge
+  s/l/ˡ/ge
+  s/m/ᵐ/ge
+  s/n/ⁿ/ge
+  s/[oₒ]/ᵒ/ge
+  s/p/ᵖ/ge
+  s/[rᵣ]/ʳ/ge
+  s/s/ˢ/ge
+  s/t/ᵗ/ge
+  s/[uᵤ]/ᵘ/ge
+  s/[vᵥ]/ᵛ/ge
+  s/[xₓ]/ˣ/ge
+  s/w/ʷ/ge
+  s/y/ʸ/ge
+  s/z/ᶻ/ge
+  s/A/ᴬ/ge
+  s/B/ᴮ/ge
+  s/D/ᴰ/ge
+  s/E/ᴱ/ge
+  s/G/ᴳ/ge
+  s/H/ᴴ/ge
+  s/I/ᴵ/ge
+  s/J/ᴶ/ge
+  s/K/ᴷ/ge
+  s/L/ᴸ/ge
+  s/M/ᴹ/ge
+  s/N/ᴺ/ge
+  s/O/ᴼ/ge
+  s/P/ᴾ/ge
+  s/R/ᴿ/ge
+  s/T/ᵀ/ge
+  s/U/ᵁ/ge
+  s/W/ᵂ/ge
+
+"  call Dret("mathmenu#Superscript")
+endfun
+
+" ---------------------------------------------------------------------
+" mathmenu#Greekify: {{{1
+fun! mathmenu#Greekify()
+"  call Dfunc("mathmenu#Greekify()")
+  s/a/α/ge
+  s/b/β/ge
+  s/g/γ/ge
+  s/d/δ/ge
+  s/e/ϵ/ge
+  s/e/ε/ge
+  s/z/ζ/ge
+  s/h/η/ge
+  s/u/θ/ge
+  s/vu/ϑ/ge
+  s/i/ι/ge
+  s/k/κ/ge
+  s/l/λ/ge
+  s/m/μ/ge
+  s/n/ν/ge
+  s/j/ξ/ge
+  s/o/ο/ge
+  s/p/π/ge
+  s/vp/ϖ/ge
+  s/r/ρ/ge
+  s/vr/ϱ/ge
+  s/s/σ/ge
+  s/vs/ς/ge
+  s/t/τ/ge
+  s/y/υ/ge
+  s/f/φ/ge
+  s/vf/ϕ/ge
+  s/x/χ/ge
+  s/c/ψ/ge
+  s/w/ω/ge
+  s/A/Α/ge
+  s/B/Β/ge
+  s/C/Ψ/ge
+  s/D/Δ/ge
+  s/E/Ε/ge
+  s/F/Φ/ge
+  s/G/Γ/ge
+  s/H/Η/ge
+  s/I/Ι/ge
+  s/J/Ξ/ge
+  s/K/Κ/ge
+  s/L/Λ/ge
+  s/M/Μ/ge
+  s/N/Ν/ge
+  s/O/Ο/ge
+  s/P/Π/ge
+  s/R/Ρ/ge
+  s/S/Σ/ge
+  s/T/Τ/ge
+  s/U/Θ/ge
+  s/V/Ω/ge
+  s/X/Χ/ge
+  s/Y/Υ/ge
+  s/Z/Ζ/ge
+
+  s/\./⠂/ge
+  s/-/―/ge
+  s/|/│/ge
+  s/+/┼/ge
+  s/8/∞/ge
+
+"  call Dret("mathmenu#Greekify")
 endfun
 
 " ---------------------------------------------------------------------

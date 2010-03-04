@@ -1,9 +1,9 @@
 " math.vim
 "   Author: Charles E. Campbell, Jr.
-"   Date:   Nov 06, 2009
-"   Version: 2
+"   Date:   Mar 04, 2010
+"   Version: 3
 " ---------------------------------------------------------------------
-let g:loaded_math_keymap = "v2"
+let g:loaded_math_keymap = "v3"
 let b:keymap_name        = "math"
 
 " Keymap Initialization: {{{1
@@ -88,6 +88,8 @@ w	<char-0x03C9>   " ω greek small letter omega
 ^^	<char-0x02C4>   " ˄
 ^(	<char-0x207D>	" ⁽
 ^)	<char-0x207E>	" ⁾
+^.	<char-0x02D9>   " ˙
+^=	<char-0x02ED>	" ˭
 ^a	<char-0x1D43>	" ᵃ
 ^b	<char-0x1D47>	" ᵇ
 ^c	<char-0x1D9C>	" ᶜ
@@ -109,11 +111,29 @@ w	<char-0x03C9>   " ω greek small letter omega
 ^t	<char-0x1D57>	" ᵗ
 ^u	<char-0x1D58>	" ᵘ
 ^v	<char-0x1D5B>   " ᵛ
-^x	<char-0x02E3>	" ˣ
 ^w	<char-0x02B7>   " ʷ
+^x	<char-0x02E3>	" ˣ
 ^y	<char-0x02B8>   " ʸ
 ^z	<char-0x1DBB>   " ᶻ
 ^,	<char-0x02BE>	" ʾ
+^A	<char-0x1D2C>	" ᴬ
+^B	<char-0x1D2E>	" ᴮ
+^D	<char-0x1D30>	" ᴰ
+^E	<char-0x1D31>	" ᴱ
+^G	<char-0x1D33>	" ᴳ
+^H	<char-0x1D34>	" ᴴ
+^I	<char-0x1D35>	" ᴵ
+^J	<char-0x1D36>	" ᴶ
+^K	<char-0x1D37>	" ᴷ
+^L	<char-0x1D38>	" ᴸ
+^M	<char-0x1D39>	" ᴹ
+^N	<char-0x1D3A>	" ᴺ
+^O	<char-0x1D3C>	" ᴼ
+^P	<char-0x1D3E>	" ᴾ
+^R	<char-0x1D3F>	" ᴿ
+^T	<char-0x1D40>	" ᵀ
+^U	<char-0x1D41>	" ᵁ
+^W	<char-0x1D42>	" ᵂ
 
 " subscripts {{{1
 _0	<char-0x2080>	" ₀
@@ -175,10 +195,10 @@ IFF	<char-0x27FA>	" ⟺
 ]]	<char-0x27E7>	" ⟧
 2[	<char-0x27E6>	" ⟦
 2]	<char-0x27E7>	" ⟧
-"B<	<char-0x27E8>	" ⟨
-"B>	<char-0x27E9> 	" ⟩
-B<	<char-0x2329>	" 〈 (big left angle)
-B>	<char-0x232A> 	" 〉 (big right angle)
+B<	<char-0x27E8>	" ⟨   (big left angle)
+B>	<char-0x27E9> 	" ⟩   (big right angle)
+"B<	<char-0x2329>	" 〈  (deprecated, big left angle)
+"B>	<char-0x232A> 	" 〉  (deprecated, big right angle)
 U(	<char-0x239B>	" ⎛
 M(	<char-0x239C>	" ⎜
 B(	<char-0x239D>	" ⎝
@@ -287,6 +307,9 @@ NAB	<char-0x2207>	" ∇ (nabla)
 DIAM	<char-0x22C4>	" ⋄ (diamond operator)
 R/	<char-0x2215>	" ∕ (right division slash)
 L/	<char-0x2216>	" ∖ (left division slash)
+P1	<char-0x2032>	" ′ (prime)
+P2	<char-0x2033>	" ″ (double prime)
+P3	<char-0x2034>	" ‴ (triple prime)
 
 " relationals {{{1
 <=	<char-0x2264>	" ≤
@@ -309,6 +332,10 @@ EST	<char-0x2259>	" ≙ (estimates)
 <>	<char-0x2276>	" ≶ (lesser-than over greater-than)
 ><	<char-0x2277>	" ≷ (greater-than over lesser-than)
 !=	<char-0x2260>	" ≠ (not equal)
+!<	<char-0x226E>	" ≮ (not less than)
+!>	<char-0x226F>	" ≯ (not greater than)
+!<=     <char-0x2270>	" ≰ (not less than or equal)
+!>=     <char-0x2271>	" ≱ (not greater than or equal)
 ID	<char-0x2261>	" ≡ (identical to)
 EQV     <char-0x224D>	" ≍
 JOIN	<char-0x22C8>	" ⋈  (join)
@@ -342,15 +369,50 @@ NEX	<char-0x2204>	" ∄ (not exists)
 EMP	<char-0x2205>	" ∅ (empty set)
 EL	<char-0x2208>	" ∈ (element of)
 NEL	<char-0x2209>	" ∉ (not element of)
-C	<char-0x2102>	" ℂ (complex numbers)
-H	<char-0x210D>	" ℍ
-L	<char-0x2112>	" ℒ (Lagrangian operator)
-N	<char-0x2115>	" ℕ (natural numbers, {1,2,3,4,...})
-R	<char-0x211D>	" ℝ (real numbers)
-Q	<char-0x211A>	" ℚ (rational fractions, p/q, where p,q ∈ ℤ)
-Z	<char-0x2124>	" ℤ (integers, {...,-4,-3,-2,-1,0,1,2,3,4,...})
+CC	<char-0x2102>	" ℂ (complex numbers)
+HH	<char-0x210D>	" ℍ
+LL	<char-0x2112>	" ℒ (Lagrangian operator)
+NN	<char-0x2115>	" ℕ (natural numbers, {1,2,3,4,...})
+RR	<char-0x211D>	" ℝ (real numbers)
+QQ	<char-0x211A>	" ℚ (rational fractions, p/q, where p,q ∈ ℤ)
+ZZ	<char-0x2124>	" ℤ (integers, {...,-4,-3,-2,-1,0,1,2,3,4,...})
 ALL	<char-0x2200>	" ∀ (all)
 *       <char-0x2217>	" ∗
+
+" ---------------------------------------------------------------------
+"  box characters: {{{1
+B-	<char-0x2500>	" ─
+B|	<char-0x2502>	" │
+DSH-	<char-0x2504>	" ┄
+DSH|	<char-0x2506>	" ┆
+BUL	<char-0x250C>	" ┌
+BDL	<char-0x2514>	" └
+BUR	<char-0x2510>	" ┐
+BDR	<char-0x2518>	" ┘
+C+	<char-0x253C>	" ┼
+Cl	<char-0x2524>	" ┤
+Cr	<char-0x251C>	" ├
+Cd	<char-0x252C>	" ┬
+Cu	<char-0x2534>	" ┴
+HB-	<char-0x2501>	" ━
+HB|	<char-0x2503>	" ┃
+HD-	<char-0x2505>	" ┅
+HD|	<char-0x2507>	" ┇
+HBUL	<char-0x250F>	" ┏
+HBDL	<char-0x2517>	" ┗
+HBUR	<char-0x2513>	" ┓
+HBDR	<char-0x251B>	" ┛
+HC+	<char-0x254B>	" ╋
+HCl	<char-0x252B>	" ┫
+HCr	<char-0x2523>	" ┣
+HCd	<char-0x2533>	" ┳
+HCu	<char-0x253B>	" ┻
+D-	<char-0x2550>	" ═
+D|	<char-0x2551>	" ║
+DUL	<char-0x2554>	" ╔
+DDL	<char-0x255A>	" ╚
+DUR	<char-0x2557>	" ╗
+DDR	<char-0x255D>	" ╝
 
 " ---------------------------------------------------------------------
 "  Modeline: {{{1
